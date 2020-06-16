@@ -29,7 +29,7 @@ namespace _24_PA9_Raul
 
             try
             {
-                if ((rdb_usdollar.Checked == false) || (rdb_japaneseyen.Checked == false))
+                if ((rdb_usdollar.Checked == false) || (rdb_japaneseyen.Checked == false) || (rdb_MalaysianRinggit.Checked == false))
                 {
                     txt_convertedamount.Text = "Select at least one type of currency to convert";
                 }
@@ -49,6 +49,14 @@ namespace _24_PA9_Raul
 
                     txt_convertedamount.Text = convertedAmount.ToString();
                 }
+
+                if (rdb_MalaysianRinggit.Checked == true)
+                {
+                    AmountEntered = double.Parse(txt_amount.Text);
+                    convertedAmount = AmountEntered * 3.01;
+
+                    txt_convertedamount.Text = convertedAmount.ToString();
+                }
             }
 
             catch (System.FormatException)
@@ -64,6 +72,7 @@ namespace _24_PA9_Raul
             txt_convertedamount.Text = string.Empty;
             rdb_japaneseyen.Checked = false;
             rdb_usdollar.Checked = false;
+            rdb_MalaysianRinggit.Checked = false;
         }
     }
 }
